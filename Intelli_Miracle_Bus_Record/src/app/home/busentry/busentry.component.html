@@ -1,0 +1,27 @@
+<section class="new-training" fxLayout fxLayoutAlign="center">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <mat-card fxFlex="400px" fxLayout="column" fxLayoutGap="20px">
+      <mat-card-title fxLayoutAlign="center">Enter details of the bus</mat-card-title>
+      <mat-card-content>
+          <mat-form-field appearance="outline" fxLayoutAlign="center">
+              <mat-label>Bus ID</mat-label>
+              <input type="text" matInput placeholder="Bus ID" ngModel name="busid" #biInput="ngModel" required>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" fxLayoutAlign="center">
+              <mat-label>In-Time</mat-label>
+              <input type="text" matInput placeholder="In-time" ngModel name="itime" #itInput="ngModel" required>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline" fxLayoutAlign="center">
+              <mat-label>Out-Time</mat-label>
+              <input type="text" matInput placeholder="Out-Time" ngModel name="otime" #otInput="ngModel" required>
+          </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions fxLayoutAlign="center">
+        <button mat-button mat-raised-button class="submit-button" type="submit" color="primary" [disabled]="f.invalid">Make An Entry  ></button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+    
+</section>

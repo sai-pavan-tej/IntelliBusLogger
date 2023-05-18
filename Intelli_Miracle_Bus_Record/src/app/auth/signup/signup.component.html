@@ -1,0 +1,36 @@
+<section class="sform">
+  <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f="ngForm" (ngSubmit)="onSubmit(f)">
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput placeholder="Email" ngModel name="email" email #emInput="ngModel" required>
+      <mat-error *ngIf="emInput.value?.length==0">Email field can't be empty</mat-error>
+      <mat-error *ngIf="emInput.value?.length!=0">Invalid Email Id</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput placeholder="Password" ngModel name="password" minlength="8" #pwInput="ngModel" required>
+      <mat-hint>(Minimum 8 characters)</mat-hint>
+      <mat-hint align="end">{{pwInput.value?.length}}/8</mat-hint>
+      <mat-error *ngIf="pwInput!=cpwInput">Password Missmatch</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Confirm Password</mat-label>
+        <input type="password" matInput placeholder="Confirm Password" ngModel name="password" minlength="8" #cpwInput="ngModel" required>
+        <mat-error *ngIf="pwInput!=cpwInput">Password Missmatch</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput [matDatepicker]="picker" [max]="maxDate" placeholder="Choose a date" ngModel name="bday" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+      <mat-checkbox ngModel name="agreement" color="primary" required>Agree to Terms and Conditions</mat-checkbox>
+    
+    <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Submit</button>
+  </form>
+</section>
